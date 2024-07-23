@@ -1,0 +1,9 @@
+# Files to not be commited #
+############################
+/composer.phar
+
+# Folders to not be commited #
+##############################
+/vendor
+/.idea
+/.vscode
