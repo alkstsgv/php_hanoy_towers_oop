@@ -1,6 +1,8 @@
 name: PHP Linting
 
-on: pull
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
 
 jobs:
   phplint:
