@@ -1,6 +1,6 @@
 name: PHP Linting
 
-on: push
+on: pull
 
 jobs:
   phplint:
