@@ -1,7 +1,9 @@
 <?php
 declare(strict_types=1);
+namespace App;
 
-
+class PropsForPainter 
+{
 const SLASH = "/";
 const BACKSLASH = "\\";
 const UNDERLINING = "_";
@@ -10,3 +12,4 @@ const L_PARENTHESIS = "(";
 const R_PARENTHESIS = ")";
 const WHITESPACE = " ";
 const VERT_BAR = "|";
+}

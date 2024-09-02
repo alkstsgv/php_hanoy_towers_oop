@@ -1,30 +1,36 @@
 <?php
 declare(strict_types=1);
 namespace App;
-require_once('Props.php');
 
 abstract class AbstractFigureBuilder
 {
     public $width;
     public $height;
+    protected $tower = [];
 
-    public function createFigure(int $width, int $height): array
+
+    public function createFigure(int $width, int $height, array $tower = []): array
     {
         $this->width = $width;
         $this->height = $height;
-        $tower = [];
+        $this->tower[] = $tower;
         
         for ($i = 0; $i <= $height; $i++) {
             
             if ($i == 0) {
-                $tower[] = WHITESPACE . str_repeat(UNDERLINING, $this->width)  . PHP_EOL;
+                $this->tower[] = PropsForPainter::WHITESPACE . str_repeat(PropsForPainter::UNDERLINING, $this->width)  . PHP_EOL;
             } elseif ($i == $height) {
-                $tower[] = VERT_BAR . str_repeat(UNDERLINING, $this->width) . VERT_BAR . PHP_EOL;
+                $this->tower[] = PropsForPainter::VERT_BAR . str_repeat(PropsForPainter::UNDERLINING, $this->width) . PropsForPainter::VERT_BAR . PHP_EOL;
             } else {
-                $tower[] = VERT_BAR . str_repeat(WHITESPACE, $this->width) . VERT_BAR . PHP_EOL;
+                $this->tower[] = PropsForPainter::VERT_BAR . str_repeat(PropsForPainter::WHITESPACE, $this->width) . PropsForPainter::VERT_BAR . PHP_EOL;
             }
             
         }
         return $tower;
+    }
+   
+
+    public function getTower() {
+        return $this->tower;
     }
 }

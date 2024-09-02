@@ -2,7 +2,9 @@
 
 declare(strict_types=1);
 
-abstract class Painter 
+namespace App;
+
+class Painter 
 {
     
 }
