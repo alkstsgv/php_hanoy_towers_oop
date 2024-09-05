@@ -10,7 +10,11 @@ require '../../vendor/autoload.php';
 // print_r($tower->createFigure(10, 7));
 
 
-$disk = new App\DiskBuilder();
-$disk->createFigure(10, 1);
+// $disk = new App\DiskBuilder();
+// $disk->createFigure(10, 1);
+// print_r($disk->getCreatedFigure());
 
-print_r($disk->getTower());
+
+// $block= new App\TowerBuilder();
+// $block->createFigure(10, 3);
+// print_r($block->getCreatedFigure());
