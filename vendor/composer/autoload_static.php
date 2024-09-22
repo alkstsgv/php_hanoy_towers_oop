@@ -211,15 +211,25 @@ class ComposerStaticInit76c2e016fa681da628cc79c1854f83a4
         ),
         'App\\' => 
         array (
-            0 => __DIR__ . '/../..' . '/src/builder',
+            0 => __DIR__ . '/../..' . '/src',
         ),
     );
 
     public static $classMap = array (
+        'App\\BlockBuilder' => __DIR__ . '/../..' . '/src/builder/BlockBuilder.php',
+        'App\\CreateFigureInterface' => __DIR__ . '/../..' . '/src/contracts/CreateFigureInterface.php',
+        'App\\DiskBuilder' => __DIR__ . '/../..' . '/src/builder/DiskBuilder.php',
+        'App\\EntityManager' => __DIR__ . '/../..' . '/src/manage/EntityManager.php',
+        'App\\PropsForBuilder' => __DIR__ . '/../..' . '/src/builder/PropsForBuilder.php',
+        'App\\Replacer' => __DIR__ . '/../..' . '/src/logic/Replacer.php',
+        'App\\TowerBuilder' => __DIR__ . '/../..' . '/src/builder/TowerBuilder.php',
+        'App\\TowerWithDisks' => __DIR__ . '/../..' . '/src/builder/TowerWithDisks.php',
+        'App\\TowerWithoutDisks' => __DIR__ . '/../..' . '/src/builder/TowerWithoutDisks.php',
         'Attribute' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/Attribute.php',
         'CURLStringFile' => __DIR__ . '/..' . '/symfony/polyfill-php81/Resources/stubs/CURLStringFile.php',
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
         'Normalizer' => __DIR__ . '/..' . '/symfony/polyfill-intl-normalizer/Resources/stubs/Normalizer.php',
+        'Painter' => __DIR__ . '/../..' . '/src/cli/Painter.php',
         'PhpToken' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/PhpToken.php',
         'ReturnTypeWillChange' => __DIR__ . '/..' . '/symfony/polyfill-php81/Resources/stubs/ReturnTypeWillChange.php',
         'SebastianBergmann\\Diff\\Chunk' => __DIR__ . '/..' . '/sebastian/diff/src/Chunk.php',
