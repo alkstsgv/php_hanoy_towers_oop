@@ -4,12 +4,11 @@ namespace App;
 
 class TowerWithoutDisks extends EntityManager
 {
-    public function createTowerWithoutDisks(int $towerLevel) {
-            $test = [];
+    public static function createTowerWithoutDisks(int $towerLevel):array {
+            $array = [];
             for ($i = 0; $i < $towerLevel; $i++) {
-                array_push($test, self::createBlock());
+                array_push($array, self::createBlock());
             }
-            return $test;
+            return $array;
         }
-    
 }

@@ -6,17 +6,17 @@ namespace App;
 class TowerWithDisks extends EntityManager
 {
 
-    public function createTowerWithDisks(int $towerLevel) {
-        $test = [];
+    public static function createTowerWithDisks(int $towerLevel):array {
+        $array = [];
         for ($i = 0; $i < $towerLevel; $i++) {
             if ($i === 0) {
-                array_push($test, self::createBlock());    
+                array_push($array, EntityManager::createBlock());    
             } else {
-                array_push($test, self::createDisk());
-                array_push($test, self::createBlock());
+                array_push($array, EntityManager::createDisk());
+                array_push($array, EntityManager::createBlock());
             }
         }
-        return $test;
+        return $array;
     }
 }
 

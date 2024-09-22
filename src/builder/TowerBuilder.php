@@ -26,24 +26,3 @@ class TowerBuilder
     }
 
 }
-
-
-
-// for ($i = 0; $i <= 3; $i ++) {
-//     $tower->buildTower($block->getBlock());
-//     $tower->buildTower($disk->getDisk());
-// }
-// $finalArr = $tower->getFinalArray();
-// $restrictedArr = array_pop($finalArr);
-// print_r($restrictedArr);
-
-
-// $tower->buildTower($block->getBlock());
-// $tower->buildTower($disk->getDisk());
-// $tower->buildTower($block->getBlock());
-// $tower->buildTower($disk->getDisk());
-// $tower->buildTower($block->getBlock());
-// $tower->buildTower($disk->getDisk());
-// $tower->buildTower($block->getBlock());
-// $tower->buildTower($disk->getDisk());
-//ниже у меня как раз массив массивов, где каждый элемент массива - блок или диск и их легко удалить/добавить в

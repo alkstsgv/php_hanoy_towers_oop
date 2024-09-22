@@ -14,13 +14,13 @@ require '../../vendor/autoload.php';
 class EntityManager 
 {
     public $towerLevel;
-    protected function createBlock() {
+    protected static function createBlock():array {
         $block = new BlockBuilder();
         $tower = new TowerBuilder();
         $tower->buildTower($block->getBlock());
         return $tower->getFinalArray();
     }
-    protected function createDisk() {
+    protected static function createDisk():array {
         $disk = new DiskBuilder();
         $tower = new TowerBuilder();
         $tower->buildTower($disk->getDisk());
