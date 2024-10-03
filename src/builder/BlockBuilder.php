@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 namespace App;
+
 use Dotenv;
 
 $dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/../');
@@ -13,7 +14,7 @@ class BlockBuilder implements CreateFigureInterface
     private $width;
     private $height;
     private $tower = [];
-    public function setWidth(int $width)
+    public function setWidth(int $width): void
     {
         $this->width = $width;
     }
@@ -21,7 +22,7 @@ class BlockBuilder implements CreateFigureInterface
     {
         return $this->width;
     }
-    public function setHeight(int $height)
+    public function setHeight(int $height): void
     {
         $this->height = $height;
     }
@@ -29,7 +30,7 @@ class BlockBuilder implements CreateFigureInterface
     {
         return $this->height;
     }
-    public function setTower(array $tower)
+    public function setTower(array $tower): void
     {
         $this->tower = $tower;
     }

@@ -4,45 +4,41 @@ declare(strict_types=1);
 
 namespace App;
 
-// use App\TowerWithDisks;
-// use App\TowerWithoutDisks;
-// require '../../vendor/autoload.php';
-
 class Transformer
 {
     private $towerWithDisks = [];
     private $towerWithoutDisks = [];
     private $towerWithoutDisks2 = [];
     private $mergedArrays = [];
-    public function setTowerWithDisks($towerWithDisks)
+    public function setTowerWithDisks($towerWithDisks): void
     {
         $this->towerWithDisks = $towerWithDisks;
     }
-    public function setTowerWithoutDisks($towerWithoutDisks)
+    public function setTowerWithoutDisks($towerWithoutDisks): void
     {
         $this->towerWithoutDisks = $towerWithoutDisks;
     }
-    public function setTowerWithoutDisks2($towerWithoutDisks2)
+    public function setTowerWithoutDisks2($towerWithoutDisks2): void
     {
         $this->towerWithoutDisks2 = $towerWithoutDisks2;
     }
-    public function setMergedArrays($mergedArrays)
+    public function setMergedArrays($mergedArrays): void
     {
         $this->mergedArrays = $mergedArrays;
     }
-    public function getTowerWithDisks()
+    public function getTowerWithDisks(): array
     {
         return $this->towerWithDisks;
     }
-    public function getTowerWithoutDisks()
+    public function getTowerWithoutDisks(): array
     {
         return $this->towerWithoutDisks;
     }
-    public function getTowerWithoutDisks2()
+    public function getTowerWithoutDisks2(): array
     {
         return $this->towerWithoutDisks2;
     }
-    public function getMergedArrays()
+    public function getMergedArrays(): array
     {
         return $this->mergedArrays;
     }

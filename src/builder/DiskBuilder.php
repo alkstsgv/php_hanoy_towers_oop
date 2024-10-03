@@ -4,9 +4,8 @@ declare(strict_types=1);
 
 namespace App;
 
-// use App\PropsForBuilder as PFB;
 use Dotenv;
-// use App\PropsForBuilder as PFB;
+
 $dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/../');
 $dotenv->load();
 
@@ -16,7 +15,7 @@ class DiskBuilder implements CreateFigureInterface
     private $height;
     private $tower = [];
 
-    public function setWidth(int $width)
+    public function setWidth(int $width): void
     {
         $this->width = $width;
     }
@@ -24,7 +23,7 @@ class DiskBuilder implements CreateFigureInterface
     {
         return $this->width;
     }
-    public function setHeight(int $height)
+    public function setHeight(int $height): void
     {
         $this->height = $height;
     }
@@ -32,7 +31,7 @@ class DiskBuilder implements CreateFigureInterface
     {
         return $this->height;
     }
-    public function setTower(array $tower)
+    public function setTower(array $tower): void
     {
         $this->tower = $tower;
     }

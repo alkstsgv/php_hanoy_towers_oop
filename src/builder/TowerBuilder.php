@@ -1,6 +1,7 @@
 <?php
 
 declare(strict_types=1);
+
 namespace App;
 
 /*
@@ -13,7 +14,7 @@ class TowerBuilder
     protected $finalArray;
     protected $towerLevel;
 
-    public function setFinalArray($finalArray)
+    public function setFinalArray($finalArray): void
     {
         $this->finalArray = $finalArray;
     }
