@@ -7,17 +7,16 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'App\\BlockBuilder' => $baseDir . '/src/builder/BlockBuilder.php',
-    'App\\CreateFigureInterface' => $baseDir . '/src/contracts/CreateFigureInterface.php',
+    'App\\CreateFigureInterface' => $baseDir . '/src/interfaces/CreateFigureInterface.php',
     'App\\DiskBuilder' => $baseDir . '/src/builder/DiskBuilder.php',
-    'App\\Fabric' => $baseDir . '/src/manage/Fabric.php',
+    'App\\EntityValuer' => $baseDir . '/src/fabric/EntityValuer.php',
     'App\\Meeter' => $baseDir . '/src/cli/Meeter.php',
     'App\\Painter' => $baseDir . '/src/cli/Painter.php',
     'App\\Replacer' => $baseDir . '/src/logic/Replacer.php',
     'App\\TowerBuilder' => $baseDir . '/src/builder/TowerBuilder.php',
-    'App\\TowerWithDisks' => $baseDir . '/src/builder/TowerWithDisks.php',
-    'App\\TowerWithoutDisks' => $baseDir . '/src/builder/TowerWithoutDisks.php',
     'App\\Transformer' => $baseDir . '/src/logic/Transformer.php',
     'Attribute' => $vendorDir . '/symfony/polyfill-php80/Resources/stubs/Attribute.php',
+    'Bin' => $baseDir . '/src/bin/bin.php',
     'CURLStringFile' => $vendorDir . '/symfony/polyfill-php81/Resources/stubs/CURLStringFile.php',
     'Composer\\InstalledVersions' => $vendorDir . '/composer/InstalledVersions.php',
     'Normalizer' => $vendorDir . '/symfony/polyfill-intl-normalizer/Resources/stubs/Normalizer.php',
@@ -40,7 +39,6 @@ return array(
     'SebastianBergmann\\Diff\\Parser' => $vendorDir . '/sebastian/diff/src/Parser.php',
     'SebastianBergmann\\Diff\\TimeEfficientLongestCommonSubsequenceCalculator' => $vendorDir . '/sebastian/diff/src/TimeEfficientLongestCommonSubsequenceCalculator.php',
     'Stringable' => $vendorDir . '/symfony/polyfill-php80/Resources/stubs/Stringable.php',
-    'SupportivePainter' => $baseDir . '/src/cli/SupportivePainter.php',
     'UnhandledMatchError' => $vendorDir . '/symfony/polyfill-php80/Resources/stubs/UnhandledMatchError.php',
     'ValueError' => $vendorDir . '/symfony/polyfill-php80/Resources/stubs/ValueError.php',
 );

@@ -238,17 +238,16 @@ class ComposerStaticInit76c2e016fa681da628cc79c1854f83a4
 
     public static $classMap = array (
         'App\\BlockBuilder' => __DIR__ . '/../..' . '/src/builder/BlockBuilder.php',
-        'App\\CreateFigureInterface' => __DIR__ . '/../..' . '/src/contracts/CreateFigureInterface.php',
+        'App\\CreateFigureInterface' => __DIR__ . '/../..' . '/src/interfaces/CreateFigureInterface.php',
         'App\\DiskBuilder' => __DIR__ . '/../..' . '/src/builder/DiskBuilder.php',
-        'App\\Fabric' => __DIR__ . '/../..' . '/src/manage/Fabric.php',
+        'App\\EntityValuer' => __DIR__ . '/../..' . '/src/fabric/EntityValuer.php',
         'App\\Meeter' => __DIR__ . '/../..' . '/src/cli/Meeter.php',
         'App\\Painter' => __DIR__ . '/../..' . '/src/cli/Painter.php',
         'App\\Replacer' => __DIR__ . '/../..' . '/src/logic/Replacer.php',
         'App\\TowerBuilder' => __DIR__ . '/../..' . '/src/builder/TowerBuilder.php',
-        'App\\TowerWithDisks' => __DIR__ . '/../..' . '/src/builder/TowerWithDisks.php',
-        'App\\TowerWithoutDisks' => __DIR__ . '/../..' . '/src/builder/TowerWithoutDisks.php',
         'App\\Transformer' => __DIR__ . '/../..' . '/src/logic/Transformer.php',
         'Attribute' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/Attribute.php',
+        'Bin' => __DIR__ . '/../..' . '/src/bin/bin.php',
         'CURLStringFile' => __DIR__ . '/..' . '/symfony/polyfill-php81/Resources/stubs/CURLStringFile.php',
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
         'Normalizer' => __DIR__ . '/..' . '/symfony/polyfill-intl-normalizer/Resources/stubs/Normalizer.php',
@@ -271,7 +270,6 @@ class ComposerStaticInit76c2e016fa681da628cc79c1854f83a4
         'SebastianBergmann\\Diff\\Parser' => __DIR__ . '/..' . '/sebastian/diff/src/Parser.php',
         'SebastianBergmann\\Diff\\TimeEfficientLongestCommonSubsequenceCalculator' => __DIR__ . '/..' . '/sebastian/diff/src/TimeEfficientLongestCommonSubsequenceCalculator.php',
         'Stringable' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/Stringable.php',
-        'SupportivePainter' => __DIR__ . '/../..' . '/src/cli/SupportivePainter.php',
         'UnhandledMatchError' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/UnhandledMatchError.php',
         'ValueError' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/ValueError.php',
     );

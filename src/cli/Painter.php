@@ -11,6 +11,9 @@ require '../../vendor/autoload.php';
 class Painter
 {
     public $prefabricatedArray;
+    public function __construct(array $prefabricatedArray) {
+        $this->prefabricatedArray = $prefabricatedArray ?? [];
+    }
     public function setPrefabricatedArray($prefabricatedArray): void
     {
         if (empty($prefabricatedArray)) {
@@ -24,59 +27,66 @@ class Painter
         return $this->prefabricatedArray;
     }
 
+ 
+    public function redrawConsolePage(): void
+    {
+        print_r("\ec");
+        print_r("\e[10B");
+        print_r("\e[38;5;128m");
+    }
+    public function redrawAndPrintInConsole(array $array): void
+    {
+        self::redrawConsolePage(); // перериосвка страницы в консоли
+
+    }
+
     public function paintToCli(): void
     {
-        // $this->prefabricatedArray = array_reverse($this->prefabricatedArray);
         [$array1, $array2, $array3] = $this->prefabricatedArray;
+        // print_r($array1);
+        // print_r($array2);
         foreach ($array1 as $key => $value) {
+            // print_r($key);
             foreach ($value as $k => $str) {
-                $left = str_pad($str, 50, " ", STR_PAD_BOTH);
+                // print_r($array2[$key][$k]);
+                // print_r($array2[$key][$k]);
+                // print_r($key);
+                // print_r($k);
+                // $left = str_pad($str, 50, " ", STR_PAD_BOTH);
+                // print_r($left);
                 $middle = str_pad($array2[$key][$k], 50, " ", STR_PAD_BOTH);
+                print_r(str_pad($array2[$key][$k], 50, " ", STR_PAD_BOTH));
+                // print_r($array2[$key][$k]);
                 $right = str_pad($array3[$key][$k], 50, " ", STR_PAD_BOTH) . PHP_EOL;
-                print_r($left . $middle . $right);
+                // print_r($right);
+                // print_r($left . $middle . $right);
             }
         }
     }
 }
 
-$towerWithDisks = new TowerWithDisks();
-$arr1 = $towerWithDisks->createTowerWithDisks(3);
+// $towerWithDisks = new TowerBuilder(3);
+// $arr1 = $towerWithDisks->createTowerWithDisks();
 
-$towerWithout = new TowerWithoutDisks();
-$arr2 = $towerWithout->createTowerWithoutDisks(3);
+// $towerWithout = new TowerBuilder(3);
+// $arr2 = $towerWithout->createTowerWithoutDisks();
 
-$towerWithout2 = new TowerWithoutDisks();
-$arr3 = $towerWithout2->createTowerWithoutDisks(3);
+// $towerWithout2 = new TowerBuilder(3);
+// $arr3 = $towerWithout2->createTowerWithoutDisks();
 
 
-$replacer = new Replacer($arr1, $arr2);
+// $replacer = new Replacer($arr1, $arr2);
 
-// print_r($replacer->getArr2());
-$replacer->moveDisk();
-
-// $replacer = new Replacer($arr1, $arr3);
 // $replacer->moveDisk();
-// print_r($replacer->getArr2());
-$painter = new Painter();
-$transformer = new Transformer();
 
-// print_r($replacer->getArr1());
-// print_r($replacer->getArr2());
+// $painter = new Painter();
+// $transformer = new Transformer($arr1, $arr2,$arr3);
+// $transformer->setTowerWithDisks($replacer->getArr1());
 
+// $transformer->setTowerWithoutDisks($replacer->getArr2());
 
-// $transformer->setTowerWithDisks(TowerWithDisks::createTowerWithDisks(3));
-$transformer->setTowerWithDisks($replacer->getArr1());
+// $transformer->setTowerWithoutDisks2($arr3);
 
-// // var_dump($transformer->getTowerWithDisks());
-// $transformer->setTowerWithoutDisks(TowerWithoutDisks::createTowerWithoutDisks(3));
-$transformer->setTowerWithoutDisks($replacer->getArr2());
-// $transformer->setTowerWithoutDisks2(TowerWithoutDisks::createTowerWithoutDisks(3));
-$transformer->setTowerWithoutDisks2($arr3);
+// $painter->setPrefabricatedArray($transformer->mergeTowersToOneArray());
 
-// // $transformer->mergeTowersToOneArray();
-$painter->setPrefabricatedArray($transformer->mergeTowersToOneArray());
-
-$painter->paintToCli();
-// $replacer = new Replacer(self::getArr2(),self::getArr1() );
-// $replacer->moveDisk();
 // $painter->paintToCli();

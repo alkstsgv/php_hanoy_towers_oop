@@ -4,9 +4,18 @@ declare(strict_types=1);
 
 namespace App;
 
-class Meeter
+use App\Painter;
+use Exception;
+
+final class Meeter
 {
     public $prompt = "";
+    public function __construct(
+        string $prompt = null,
+        array $choose = null
+    ) {
+        $this->prompt = $prompt;
+    }
 
     public function showMeetingMessage(): void
     {
@@ -15,11 +24,11 @@ class Meeter
     Здравствуйте! Пожалуйста, введите своё имя: \n
     EOL;
 
-        $prompt = readline();
+        $this->prompt = readline();
 
         echo <<<EOL
     \e[32m
-    Здравствуйте,\e[31m $prompt! \e[32m 
+    Здравствуйте,\e[31m $this->prompt! \e[32m 
     Вы запустили игру 'Ханойские башни'. \n 
     Правила игры: 
     1. Переместить все диски с пирамиды с дисками на пирамиду без дисков за как можно меньшее кол-во действий. \n
@@ -33,7 +42,33 @@ class Meeter
     \e[32m
     EOL;
     }
-}
 
-$meeter = new Meeter();
-$meeter->showMeetingMessage();
+    public function choosePyramid(): array
+    {
+        $haystack = [1, 2, 3];
+        $choose = [
+            trim(readline("Выберите первую пирамиду: ")) . PHP_EOL,
+            trim(readline("Выберите вторую пирамиду: ")) . PHP_EOL
+        ];
+        
+        if (max($choose) != max($haystack)) {
+            array_push($choose, max($haystack));
+        } elseif (max($choose) == max($haystack)) {
+            array_push($choose, max($choose) - min($choose));
+        }
+
+        foreach ($choose as $key => $value) {
+            if ($choose[0] === $choose[1]) {
+                return (new Meeter())->choosePyramid();
+            }
+            if ($value <= 0 || $value > 3 || is_string($value)) {
+                $choose[$key] = 0;
+            }
+            if (in_array((int)$value, $haystack, $strict = true)) {
+                $choose[$key] = (int)$value - 1;
+            }
+        }
+        // asort($choose);
+        return $choose;
+    }
+}

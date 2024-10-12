@@ -6,6 +6,7 @@ namespace App;
 
 use Dotenv;
 
+// require '../../vendor/autoload.php';
 $dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/../');
 $dotenv->load();
 
@@ -13,7 +14,19 @@ class DiskBuilder implements CreateFigureInterface
 {
     private $width;
     private $height;
-    private $tower = [];
+    private $tower;
+    /**
+     * Class constructor.
+     */
+    public function __construct(
+        int $width = null,
+        int $height = null,
+        array $tower = null
+    ) {
+        $this->width = $width ?? (int)$_ENV['DISK_WIDTH'];
+        $this->height = $height ?? (int)$_ENV['DISK_HEIGHT'];
+        $this->tower = $tower ?? [];
+    }
 
     public function setWidth(int $width): void
     {
@@ -39,29 +52,36 @@ class DiskBuilder implements CreateFigureInterface
     {
         return $this->tower;
     }
-    public function createFigure(int $width, int $height, array $tower = []): array
+    public function createFigure(int $width, int $height, array $tower): array
     {
-        $this->width = $width;
-        $this->height = $height;
-        $this->tower = $tower;
-
-
-        for ($i = 0; $i <= $height; $i++) {
-            if ($width === 0) {
+        for ($i = 0; $i <= $this->height; $i++) {
+            if ($this->width === 0) {
                 break;
             }
-            if ($i == 0) {
-                $this->tower[] = $_ENV['WHITESPACE'] . str_repeat($_ENV['UNDERLINING'], $this->width);
-            } elseif ($i == $height) {
-                $this->tower[] = $_ENV['VERT_BAR'] . str_repeat($_ENV['UNDERLINING'], $this->width) . $_ENV['VERT_BAR'];
+            if ($i === 0) {
+                $this->tower[] = $_ENV['WHITESPACE'] . str_repeat($_ENV['UNDERLINING'], (int)$this->width);
+
+            } elseif ($i === $this->height) {
+
+                $this->tower[] = $_ENV['VERT_BAR'] . str_repeat($_ENV['UNDERLINING'], (int)$this->width) . $_ENV['VERT_BAR'];
             }
+
         }
         return $this->tower;
     }
     public function getDisk(): array
     {
-        $disk = new DiskBuilder();
-        $disk->createFigure((int)$_ENV['DISK_WIDTH'], (int)$_ENV['DISK_HEIGHT']);
-        return $disk->getTower();
+        $newDisk = (new DiskBuilder())->createFigure($this->width, $this->height, $this->tower);
+        // $newDisk = new DiskBuilder();
+        return $newDisk;
     }
 }
+
+// $t = new DiskBuilder();
+// $t1 = $t->getDisk();
+// print_r($t1->createFigure(25,5,[]));
+// $t->createFigure();
+// $t->getDisk();
+// print_r($t->getDisk());
+// $t->createFigure();
+// print_r($t->getTower());

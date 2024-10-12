@@ -6,5 +6,5 @@ namespace App;
 
 interface CreateFigureInterface
 {
-    public function createFigure(int $width, int $height, array $tower = []): array;
+    public function createFigure(int $width, int $height, array $tower): array;
 }

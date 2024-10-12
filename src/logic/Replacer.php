@@ -4,57 +4,97 @@ declare(strict_types=1);
 
 namespace App;
 
-require '../../vendor/autoload.php';
+use Bin;
+use Exception;
+
+// require '../../vendor/autoload.php';
 class Replacer
 {
-    private $arr1;
-    private $arr2;
+    private $arr;
     private $middleArr;
+    private $changedArray;
 
-    public function __construct(array $arr1, array $arr2)
-    {
-        $this->arr1 = $arr1;
-        $this->arr2 = $arr2;
+    public function __construct(
+        array $arr = [],
+        array $middleArr = []
+    ) {
+        $this->arr = $arr ?? [];
+        $this->middleArr = $middleArr ?? [];
     }
-    public function setArr1($arr1): void
+    public function setArray(array $array, int $key): void
     {
-        $this->arr1 = $arr1;
+        $this->arr[$key] = $array;
     }
-    public function getArr1(): array
+    public function getArray(): array
     {
-        return $this->arr1;
+        return $this->arr;
     }
-    public function setArr2($arr2): void
-    {
-        $this->arr2 = $arr2;
-    }
-    public function getArr2(): array
-    {
-        return $this->arr2;
-    }
-    public function moveDisk(): void
-    {
-        if ($this->arr1 !== $this->arr2) {
-            foreach ($this->arr1 as $k => $v) {
-                if ($this->arr1[$k] === $this->arr2[$k]) {
-                    $this->middleArr[] = $this->arr1[$k];
-                    $this->middleArr[] = $this->arr2[$k];
-                    unset($this->arr1[$k], $this->arr2[$k]);
-                } else {
-                    $this->middleArr[] = array_shift($this->arr1);
-                    $this->middleArr[] = array_shift($this->arr2);
-                    array_unshift($this->arr1, array_pop($this->middleArr));
-                    array_unshift($this->arr2, array_pop($this->middleArr));
-                    break;
-                }
 
-            }
-            for ($i = 0; $i <= count($this->middleArr); $i++) {
-                array_unshift($this->arr1, array_pop($this->middleArr));
-                array_unshift($this->arr2, array_pop($this->middleArr));
-            }
+    public function getChangedArray(): array
+    {
+        return $this->changedArray;
+    }
 
+    public function moveDisk(array $array): array
+    {
+        $arrayKeys = [];
+        foreach ($array as $key => $value) {
+            $arrayKeys[] = $key;
         }
+        /*
+        *ЭТО КОСТЫЛЬ. НЕ НАДО ИСПОЛЬЗОВАТЬ сurrent, next, end в таком контексте
+        *
+        */
+        $ar1 = [(int)current($arrayKeys) => $array[current($arrayKeys)]];
+        $ar2 = [(int)next($arrayKeys) => $array[next($arrayKeys)]];
+        $ar3 = [(int)next($arrayKeys) => $array[end($arrayKeys)]];
+        // [$arr1, $arr2, $arr3] = $array;
+        // print_r($arr1);
+        // print_r($arr2);
+        // print_r($arr3);
+
+        // print_r($arrayKeys[1]);
+        //  [$ar1] = $ar1;
+        // foreach($array as $k => $v) {
+        //    if (array_keys($arrayKeys)[$k] === $k) {
+        //         print_r(array_keys($arrayKeys)[$k]);
+        //    }
+        // }
+        // print_r($arr1);
+
+        // foreach ($array as $key => $value) {
+        //     $arr1 = $array[current($arrayKeys)];
+        //     $arr2 = $array[next($arrayKeys)];
+        //     $arr3 = $array[end($arrayKeys)];
+        // print_r((int)current($arrayKeys));
+        // print_r((int)next($arrayKeys));
+        // print_r((int)next($arrayKeys));
+
+        // if ($arr1 !== $arr2) {
+
+        // $arr3 = $array[$arrayKeys[0]]
+        foreach ($array as $k => $v) {
+            if ($array[$arrayKeys[0]][$k] === $array[$arrayKeys[1]][$k]) {
+                $this->middleArr[] = $array[$arrayKeys[0]][$k];
+                $this->middleArr[] = $array[$arrayKeys[1]][$k];
+                unset($array[$arrayKeys[0]][$k], $array[$arrayKeys[1]][$k]);
+            } else {
+                $this->middleArr[] = array_shift($array[$arrayKeys[0]]);
+                $this->middleArr[] = array_shift($array[$arrayKeys[1]]);
+                array_unshift($array[$arrayKeys[0]], array_pop($this->middleArr));
+                array_unshift($array[$arrayKeys[1]], array_pop($this->middleArr));
+                break;
+            }
+        }
+        for ($i = 0; $i <= count($this->middleArr); $i++) {
+            array_unshift($array[$arrayKeys[0]], array_pop($this->middleArr));
+            array_unshift($array[$arrayKeys[1]], array_pop($this->middleArr));
+        }
+        return $this->changedArray = [
+            $arrayKeys[0] => $array[$arrayKeys[0]],
+            $arrayKeys[1] => $array[$arrayKeys[1]],
+            $arrayKeys[2] => $array[$arrayKeys[2]]
+        ];
     }
 }
 

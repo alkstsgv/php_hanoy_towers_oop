@@ -4,13 +4,11 @@ declare(strict_types=1);
 
 namespace App;
 
-
 /**
- * Class Fabric produces details of Tower
+ * Class EntityValuer produces entities
  */
-class Fabric
+class EntityValuer
 {
-    public $towerLevel;
     protected static function createBlock(): array
     {
         $block = new BlockBuilder();
