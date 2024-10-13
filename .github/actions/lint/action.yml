@@ -1,0 +1,15 @@
+name: 'PHP Lint (php -l) action'
+description: 'Lints code against php -l command for basic syntax check'
+inputs:
+    dir:
+        description: 'Target dir to check'
+        required: false
+        default: '.'
+outputs:
+    linting-result:
+        description: 'Result of linting'
+runs:
+    using: 'docker'
+    image: 'Dockerfile'
+    args:
+        - ${{ inputs.dir }}
