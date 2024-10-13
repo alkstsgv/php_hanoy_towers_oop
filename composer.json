@@ -3,13 +3,7 @@
     "psr-4": {
       "App\\": "src/"
     },
-    "classmap": ["src/"],
-    "exclude-from-classmap": [
-      "/builder/BlockBuilder.php",
-      "/builder/DiskBuilder.php",
-      "/cli/Painter.php",
-      "/factory/factory.php"
-    ]
+    "classmap": ["src/"]
   },
   "require": {
     "ext-readline": "*",

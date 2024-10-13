@@ -41,38 +41,10 @@ class Replacer
         foreach ($array as $key => $value) {
             $arrayKeys[] = $key;
         }
-        /*
-        *ЭТО КОСТЫЛЬ. НЕ НАДО ИСПОЛЬЗОВАТЬ сurrent, next, end в таком контексте
-        *
-        */
-        $ar1 = [(int)current($arrayKeys) => $array[current($arrayKeys)]];
-        $ar2 = [(int)next($arrayKeys) => $array[next($arrayKeys)]];
-        $ar3 = [(int)next($arrayKeys) => $array[end($arrayKeys)]];
-        // [$arr1, $arr2, $arr3] = $array;
-        // print_r($arr1);
-        // print_r($arr2);
-        // print_r($arr3);
 
-        // print_r($arrayKeys[1]);
-        //  [$ar1] = $ar1;
-        // foreach($array as $k => $v) {
-        //    if (array_keys($arrayKeys)[$k] === $k) {
-        //         print_r(array_keys($arrayKeys)[$k]);
-        //    }
-        // }
-        // print_r($arr1);
-
-        // foreach ($array as $key => $value) {
-        //     $arr1 = $array[current($arrayKeys)];
-        //     $arr2 = $array[next($arrayKeys)];
-        //     $arr3 = $array[end($arrayKeys)];
-        // print_r((int)current($arrayKeys));
-        // print_r((int)next($arrayKeys));
-        // print_r((int)next($arrayKeys));
-
-        // if ($arr1 !== $arr2) {
-
-        // $arr3 = $array[$arrayKeys[0]]
+        // $ar1 = [(int)current($arrayKeys) => $array[current($arrayKeys)]];
+        // $ar2 = [(int)next($arrayKeys) => $array[next($arrayKeys)]];
+        // $ar3 = [(int)next($arrayKeys) => $array[end($arrayKeys)]];
         foreach ($array as $k => $v) {
             if ($array[$arrayKeys[0]][$k] === $array[$arrayKeys[1]][$k]) {
                 $this->middleArr[] = $array[$arrayKeys[0]][$k];

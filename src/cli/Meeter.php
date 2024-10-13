@@ -71,4 +71,11 @@ final class Meeter
         // asort($choose);
         return $choose;
     }
+
+    public function redrawConsolePage(): void
+    {
+        print_r("\ec");
+        print_r("\e[10B");
+        print_r("\e[38;5;128m");
+    }
 }

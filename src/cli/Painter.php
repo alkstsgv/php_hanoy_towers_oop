@@ -11,7 +11,7 @@ require '../../vendor/autoload.php';
 class Painter
 {
     public $prefabricatedArray;
-    public function __construct(array $prefabricatedArray) {
+    public function __construct(array $prefabricatedArray = null) {
         $this->prefabricatedArray = $prefabricatedArray ?? [];
     }
     public function setPrefabricatedArray($prefabricatedArray): void
@@ -28,38 +28,19 @@ class Painter
     }
 
  
-    public function redrawConsolePage(): void
-    {
-        print_r("\ec");
-        print_r("\e[10B");
-        print_r("\e[38;5;128m");
-    }
-    public function redrawAndPrintInConsole(array $array): void
-    {
-        self::redrawConsolePage(); // перериосвка страницы в консоли
-
-    }
+    
 
     public function paintToCli(): void
     {
         [$array1, $array2, $array3] = $this->prefabricatedArray;
-        // print_r($array1);
-        // print_r($array2);
         foreach ($array1 as $key => $value) {
-            // print_r($key);
             foreach ($value as $k => $str) {
-                // print_r($array2[$key][$k]);
-                // print_r($array2[$key][$k]);
-                // print_r($key);
-                // print_r($k);
-                // $left = str_pad($str, 50, " ", STR_PAD_BOTH);
-                // print_r($left);
+                $array2[$key][$k] = $array2[$key][$k] ?? $array2[$key][0];
+                $array3[$key][$k] = $array3[$key][$k] ?? $array3[$key][0];
+                $left = str_pad($str, 50, " ", STR_PAD_BOTH);
                 $middle = str_pad($array2[$key][$k], 50, " ", STR_PAD_BOTH);
-                print_r(str_pad($array2[$key][$k], 50, " ", STR_PAD_BOTH));
-                // print_r($array2[$key][$k]);
                 $right = str_pad($array3[$key][$k], 50, " ", STR_PAD_BOTH) . PHP_EOL;
-                // print_r($right);
-                // print_r($left . $middle . $right);
+                print_r($left . $middle . $right);
             }
         }
     }

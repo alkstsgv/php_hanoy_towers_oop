@@ -7,19 +7,25 @@ namespace App;
 
 class Transformer
 {
+    public $towerLevel;
     private $towerWithDisks;
     private $towerWithoutDisks1;
     private $towerWithoutDisks2 ;
     private $mergedArrays;
+    
 
     public function __construct(
-        array $towerWithDisks, 
-        array $towerWithoutDisks1,
-        array $towerWithoutDisks2
+        int $towerLevel,
+        array $towerWithDisks = null, 
+        array $towerWithoutDisks1  = null,
+        array $towerWithoutDisks2  = null
+        
         ) {
-        $this->towerWithDisks = $towerWithDisks;
-        $this->towerWithoutDisks1 = $towerWithoutDisks1;
-        $this->towerWithoutDisks2 = $towerWithoutDisks2;
+        $this->towerLevel = $towerLevel ?? 1;
+        $this->towerWithDisks = $towerWithDisks ?? (new TowerBuilder($this->towerLevel))->createTowerWithDisks();
+        $this->towerWithoutDisks1 = $towerWithoutDisks1 ?? (new TowerBuilder($this->towerLevel))->createTowerWithoutDisks();
+        $this->towerWithoutDisks2 = $towerWithoutDisks2 ?? (new TowerBuilder($this->towerLevel))->createTowerWithoutDisks();
+       
     }
     public function setTowerWithDisks($towerWithDisks): void
     {
