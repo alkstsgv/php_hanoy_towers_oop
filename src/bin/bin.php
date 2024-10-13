@@ -52,11 +52,11 @@ final class Bin
         $tower2 = $towerWithoutDisks1->createTowerWithoutDisks();
         $tower3 = $towerWithoutDisks2->createTowerWithoutDisks();
         $transformer = new Transformer($this->towerLevel);
-        $mergedArrays = $transformer->mergeTowersToOneArray();
+        // $mergedArrays = $transformer->mergeTowersToOneArray();
         // $painter = new Painter($transformer->getMergedArrays());
-        $this->painter->__construct($transformer->getMergedArrays());
-        $this->painter->paintToCli();
-        $inputFromKeybord = $this->meeter->choosePyramid();
+        // $this->painter->__construct($transformer->getMergedArrays());
+        // $this->painter->paintToCli();
+
 
         /**
          * Анонимная функция нужна для матча введённых цифр с клавиатуры с конкретным Tower
@@ -68,6 +68,8 @@ final class Bin
             foreach ($inputFromKeybord as $key => $value) {
                 foreach ($mergedArrays as $k => $v) {
                     if ($k === $value) {
+                        // print_r($k);
+                        // print_r($mergedArrays[$k]);
                         $this->replacer->setArray($mergedArrays[$k], $k);
                         continue;
                     }
@@ -75,9 +77,7 @@ final class Bin
             }
 
         };
-        $callback($inputFromKeybord, $mergedArrays);
-        // $arr = $this->replacer->getArray();
-// print_r($arr);
+
         /**
          * Анонимная функция, которая меняет значения в массивах, и печатает массивы затем
          * @param array $array 
@@ -86,15 +86,41 @@ final class Bin
             // $this->meeter->redrawConsolePage();
             // print_r($array);
             $this->replacer->moveDisk($array);
-            $sortedChangedArray = $this->replacer->getChangedArray();
+            $sortedChangedArray = $this->replacer->getArray();
             ksort($sortedChangedArray);
+            // print_r($sortedChangedArray);
             $this->painter->setPrefabricatedArray($sortedChangedArray);
             $this->painter->paintToCli();
+            // print_r($this->replacer->getArray());
         };
-        $callback2($this->replacer->getArray());
-        
+
+        #1
+        $inputFromKeybord = $this->meeter->choosePyramid();
+        $mergedArrays0 = $transformer->mergeTowersToOneArray();
+        $callback($inputFromKeybord, $mergedArrays0);
+        $mr = $this->replacer->getArray();
+        $callback2( $mr);
+
+        #2
+        // $inputFromKeybord = $this->meeter->choosePyramid();
+        // $mr = $this->replacer->getArray();
+        // // print_r($mr);
+        // $callback($inputFromKeybord, $mr);
+        // $mr = $this->replacer->getArray();
+        // // print_r( $this->replacer->getArray());
+        // $callback2($mr);
+        // print_r($this->replacer->getArray()); 
+
+        #####2
+        // print_r($this->replacer->getArray());
+        // $inputFromKeybord = $this->meeter->choosePyramid();
+        // $mergedArrays2 = $this->replacer->getArray();
+        // $mergedArrays2 = ksort($mergedArrays2);
+        // $callback($inputFromKeybord, $mergedArrays2);
+        // $callback2( $mergedArrays2);
+        // print_r($this->replacer->getArray());
        
-        // print_r($mergedArrays);
+
         
         // while (true) {
         //     $callback2($this->replacer->getArray());
