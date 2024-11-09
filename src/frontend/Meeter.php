@@ -4,9 +4,6 @@ declare(strict_types=1);
 
 namespace App;
 
-use App\Painter;
-use Exception;
-
 final class Meeter
 {
     public $prompt = "";
@@ -43,33 +40,36 @@ final class Meeter
     EOL;
     }
 
-    public function choosePyramid(): array
+    public function choosePyramid(int $chooseMode = null): array
     {
-        $haystack = [1, 2, 3];
-        $choose = [
-            trim(readline("Выберите первую пирамиду: ")) . PHP_EOL,
-            trim(readline("Выберите вторую пирамиду: ")) . PHP_EOL
-        ];
-        
-        if (max($choose) != max($haystack)) {
-            array_push($choose, max($haystack));
-        } elseif (max($choose) == max($haystack)) {
-            array_push($choose, max($choose) - min($choose));
-        }
+        if ($chooseMode === 0) {
+            return $choose = [0, 1, 2];
+        } else {
+            $haystack = [1, 2, 3];
+            $choose = [
+                trim(readline("Выберите первую пирамиду: ")) . PHP_EOL,
+                trim(readline("Выберите вторую пирамиду: ")) . PHP_EOL
+            ];
 
-        foreach ($choose as $key => $value) {
-            if ($choose[0] === $choose[1]) {
-                return (new Meeter())->choosePyramid();
+            if (max($choose) != max($haystack)) {
+                array_push($choose, max($haystack));
+            } elseif (max($choose) == max($haystack)) {
+                array_push($choose, max($choose) - min($choose));
             }
-            if ($value <= 0 || $value > 3 || is_string($value)) {
-                $choose[$key] = 0;
+
+            foreach ($choose as $key => $value) {
+                if ($choose[0] === $choose[1]) {
+                    return (new Meeter())->choosePyramid();
+                }
+                if ($value <= 0 || $value > 3 || is_string($value)) {
+                    $choose[$key] = 0;
+                }
+                if (in_array((int)$value, $haystack, $strict = true)) {
+                    $choose[$key] = (int)$value - 1;
+                }
             }
-            if (in_array((int)$value, $haystack, $strict = true)) {
-                $choose[$key] = (int)$value - 1;
-            }
+            return $choose;
         }
-        // asort($choose);
-        return $choose;
     }
 
     public function redrawConsolePage(): void

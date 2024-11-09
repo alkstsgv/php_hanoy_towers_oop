@@ -6,8 +6,7 @@ namespace App;
 
 use Dotenv;
 
-// require '../../vendor/autoload.php';
-$dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/../');
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/../../');
 $dotenv->load();
 
 class DiskBuilder implements CreateFigureInterface
@@ -15,17 +14,20 @@ class DiskBuilder implements CreateFigureInterface
     private $width;
     private $height;
     private $tower;
+    private $array;
     /**
      * Class constructor.
      */
     public function __construct(
         int $width = null,
         int $height = null,
-        array $tower = null
+        array $tower = null,
+        array $array = null
     ) {
         $this->width = $width ?? (int)$_ENV['DISK_WIDTH'];
         $this->height = $height ?? (int)$_ENV['DISK_HEIGHT'];
         $this->tower = $tower ?? [];
+        $this->array = $array ?? [];
     }
 
     public function setWidth(int $width): void
@@ -52,6 +54,18 @@ class DiskBuilder implements CreateFigureInterface
     {
         return $this->tower;
     }
+    public function initiateDisks(array $inputArray, int $countOfLevels, int $neededArrayKey): array
+    {
+        for ($i = 0;$i < $countOfLevels;$i++) {
+            foreach ($inputArray as $inputKey => $inputValue) {
+                if ($inputKey === $neededArrayKey) {
+                    $inputArray[$inputKey][] = self::getDisk();
+                }
+            }
+        }
+        array_shift($inputArray[$neededArrayKey]);
+        return $inputArray;
+    }
     public function createFigure(int $width, int $height, array $tower): array
     {
         for ($i = 0; $i <= $this->height; $i++) {
@@ -72,16 +86,6 @@ class DiskBuilder implements CreateFigureInterface
     public function getDisk(): array
     {
         $newDisk = (new DiskBuilder())->createFigure($this->width, $this->height, $this->tower);
-        // $newDisk = new DiskBuilder();
         return $newDisk;
     }
 }
-
-// $t = new DiskBuilder();
-// $t1 = $t->getDisk();
-// print_r($t1->createFigure(25,5,[]));
-// $t->createFigure();
-// $t->getDisk();
-// print_r($t->getDisk());
-// $t->createFigure();
-// print_r($t->getTower());

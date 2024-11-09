@@ -6,8 +6,7 @@ namespace App;
 
 use Dotenv;
 
-// require '../../vendor/autoload.php';
-$dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/../');
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/../../');
 $dotenv->load();
 
 class BlockBuilder implements CreateFigureInterface
@@ -15,9 +14,7 @@ class BlockBuilder implements CreateFigureInterface
     private $width;
     private $height;
     private $tower;
-    /**
-     * Class constructor.
-     */
+
     public function __construct(
         int $width = null,
         int $height = null,
@@ -75,7 +72,3 @@ class BlockBuilder implements CreateFigureInterface
         return $newReplacementBlock;
     }
 }
-
-// $t = new BlockBuilder();
-// print_r($t->getBlock());
-// print_r($t->getReplacementOfDisk());
