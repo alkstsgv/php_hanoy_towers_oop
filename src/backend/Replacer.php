@@ -1,10 +1,7 @@
 <?php
-
 declare(strict_types=1);
 
 namespace App;
-
-
 class Replacer
 {
     private $arr;
@@ -31,8 +28,14 @@ class Replacer
     {
         return $this->changedArray;
     }
-
-    public function trullyMoveDisk(array $array, int $firstPeg, int $secondPeg): array
+    /**
+     * Summary of moveDisk
+     * @param array $array принимает массив с массивами
+     * @param int $firstPeg первая колонка, откуда взять последний элемент массива
+     * @param int $secondPeg вторая колонка, куда положить элемент массива
+     * @return array возврат массива с изменёнными данными
+     */
+    public function moveDisk(array $array, int $firstPeg, int $secondPeg): array
     {
         foreach ($array as $key => $value) {
             foreach ($value as $k => $v) {

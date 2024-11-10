@@ -1,13 +1,11 @@
 <?php
-
 declare(strict_types=1);
 
 namespace App;
 
-/*
-* Через этот класс можно получить массив с объектами как с дисками, так и без них
-*
-*/
+/**
+ * TowerBuilder является фабрикой для постройки разных башен для их отрисовки
+ */
 class TowerBuilder extends EntityValuer
 {
     public $towerLevel;
@@ -26,7 +24,6 @@ class TowerBuilder extends EntityValuer
         $this->finalArray = $finalArray ?? [];
         $this->arrayForTowers = $arrayForTowers ?? [];
     }
-
     public function setTowerLevel(int $towerLevel)
     {
         $this->towerLevel = $towerLevel;
@@ -38,7 +35,6 @@ class TowerBuilder extends EntityValuer
     public function setFinalArray($finalArray): void
     {
         $this->finalArray = $finalArray;
-
     }
     public function getFinalArray(): array
     {
@@ -55,14 +51,12 @@ class TowerBuilder extends EntityValuer
     {
         return $this->arrayForTowers;
     }
-
     public function buildTower(array $array): array
     {
         $this->array = $array;
         $this->finalArray = $this->array;
         return $this->finalArray ?? [];
     }
-
     public function setTowersWithInputKeyboard(array $inputArray, int $key): void
     {
         $this->arrayForConnectionTowersWithKeyboard[$key] = $inputArray;
@@ -71,50 +65,37 @@ class TowerBuilder extends EntityValuer
     {
         return $this->arrayForConnectionTowersWithKeyboard;
     }
-
     public function createTowerWithOrWithoutDisks(int $countOfDisks, int $commonHeight): array
     {
         if ($countOfDisks >= $this->towerLevel) {
             $countOfDisks = $this->towerLevel;
-
         }
-
         if ($countOfDisks > 0) {
             for ($i = 0; $i < $countOfDisks; $i++) {
-
                 if ($i === 0) {
                     array_push($this->array, self::createDisk());
-                    // array_push($this->array, self::createBlock());
                 } else {
                     array_push($this->array, self::createBlock());
                     array_push($this->array, self::createDisk());
-
                 }
-
             }
             for (; $i <= $commonHeight; $i++) {
                 if ($i === 0) {
                     array_push($this->array, self::createBlock());
-
                 } else {
-
                     array_push($this->array, self::createBlock());
                     array_push($this->array, self::createReplacementOfDisk());
                 }
-
             }
-
         }
         if ($countOfDisks === 0) {
             for ($i = 0; $i <= $this->towerLevel; $i++) {
                 if ($i === 0) {
                     array_push($this->array, self::createBlock());
                 } else {
-
                     array_push($this->array, self::createBlock());
                     array_push($this->array, self::createReplacementOfDisk());
                 }
-                // self::createTowerWithoutDisks();
             }
         }
         return $this->array;

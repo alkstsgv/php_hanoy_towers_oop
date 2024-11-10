@@ -56,7 +56,7 @@ class DiskBuilder implements CreateFigureInterface
     }
     public function initiateDisks(array $inputArray, int $countOfLevels, int $neededArrayKey): array
     {
-        for ($i = 0;$i < $countOfLevels;$i++) {
+        for ($i = 0; $i < $countOfLevels; $i++) {
             foreach ($inputArray as $inputKey => $inputValue) {
                 if ($inputKey === $neededArrayKey) {
                     $inputArray[$inputKey][] = self::getDisk();
@@ -74,12 +74,10 @@ class DiskBuilder implements CreateFigureInterface
             }
             if ($i === 0) {
                 $this->tower[] = $_ENV['WHITESPACE'] . str_repeat($_ENV['UNDERLINING'], (int)$this->width);
-
             } elseif ($i === $this->height) {
-
-                $this->tower[] = $_ENV['VERT_BAR'] . str_repeat($_ENV['UNDERLINING'], (int)$this->width) . $_ENV['VERT_BAR'];
+                $this->tower[] = $_ENV['VERT_BAR'] .
+                str_repeat($_ENV['UNDERLINING'], (int)$this->width) . $_ENV['VERT_BAR'];
             }
-
         }
         return $this->tower;
     }

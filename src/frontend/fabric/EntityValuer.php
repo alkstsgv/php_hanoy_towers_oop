@@ -1,11 +1,13 @@
 <?php
-
 declare(strict_types=1);
 
 namespace App;
+use App\BlockBuilder;
+use App\TowerBuilder;
+use App\DiskBuilder;
 
 /**
- * Class EntityValuer produces entities
+ * Class EntityValuer создает сущности, т.е. своеобразная фабрика
  */
 class EntityValuer
 {

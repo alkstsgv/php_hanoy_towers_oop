@@ -1,5 +1,4 @@
 <?php
-
 declare(strict_types=1);
 
 namespace App;
@@ -9,18 +8,16 @@ class Painter
     public $prefabricatedArray;
     public $towerLevel;
 
-
     public function __construct(
         string $towerLevel = null,
         array $prefabricatedArray = null
     ) {
         $this->towerLevel = (int)$towerLevel ?? 1;
         $this->prefabricatedArray = $prefabricatedArray ?? [];
-
     }
     public function setPrefabricatedArray(string $prefabricatedArray): void
     {
-            $this->prefabricatedArray = $prefabricatedArray;
+        $this->prefabricatedArray = $prefabricatedArray;
     }
 
     public function getPrefabricatedArray(): string

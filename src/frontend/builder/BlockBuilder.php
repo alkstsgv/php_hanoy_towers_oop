@@ -68,7 +68,8 @@ class BlockBuilder implements CreateFigureInterface
     }
     public function getReplacementOfDisk(): array
     {
-        $newReplacementBlock = (new BlockBuilder((int)$_ENV['BLOCK_WIDTH'], 1))->createFigure($this->width, $this->height, $this->tower);
+        $newReplacementBlock = (new BlockBuilder((int)$_ENV['BLOCK_WIDTH'], 1))->
+        createFigure($this->width, $this->height, $this->tower);
         return $newReplacementBlock;
     }
 }

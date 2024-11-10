@@ -1,5 +1,4 @@
 <?php
-
 declare(strict_types=1);
 
 namespace App;
@@ -34,7 +33,6 @@ class MiddleFront
                 $this->arraysToDraw[$key] = (new TowerBuilder($this->towerLevel))->
                 createTowerWithOrWithoutDisks(count($array), $this->towerLevel);
             }
-
         }
         return $this->arraysToDraw;
     }
