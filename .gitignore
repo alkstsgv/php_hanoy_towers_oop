@@ -1,3 +1,5 @@
 /vendor
 /.vscode
 /src/builder/.env
+/phpdoc
+/.php-cs-fixer.cache
