@@ -1,0 +1,15 @@
+name: 'PHP style checker (phpcs) action'
+description: 'Checks code with hardcoded (pikabu) style with phpcs tool'
+inputs:
+    path:
+        description: 'Target path or file list to check'
+        required: false
+        default: '.'
+outputs:
+    style-checking-result:
+        description: 'Result of phpcs'
+runs:
+    using: 'docker'
+    image: 'Dockerfile'
+    args:
+        - ${{ inputs.path }}
