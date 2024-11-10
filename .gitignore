@@ -3,3 +3,4 @@
 /src/builder/.env
 /phpdoc
 /.php-cs-fixer.cache
+/src/.env
